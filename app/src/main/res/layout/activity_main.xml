@@ -29,4 +29,17 @@
         android:hint="@string/hinttext"
         android:text="@string/editmessage" />
 
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text= "Check this out"
+        android:id ="@+id/myCheckbox" />
+
+    <Switch
+        android:id="@+id/mySwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="I'm a switch" />
+
+
 </LinearLayout>
