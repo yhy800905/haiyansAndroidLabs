@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <TextView
         android:textSize="20dp"
@@ -15,7 +15,7 @@
 
     <Button
         android:textSize="20dp"
-        android:id="@+id/mybutton"
+        android:id="@+id/myButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
@@ -23,7 +23,7 @@
 
     <EditText
         android:textSize="20dp"
-        android:id="@+id/myedittext"
+        android:id="@+id/myEdittext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/hinttext"
