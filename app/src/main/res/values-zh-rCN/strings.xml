@@ -2,4 +2,6 @@
 <resources>
     <string name="hello_message">你好世界！</string>
     <string name="button_message">我是一个按钮</string>
+    <string name="editmessage">我是编辑区域</string>
+    <string name="hinttext">在这里输入</string>
 </resources>
