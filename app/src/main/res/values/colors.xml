@@ -2,8 +2,8 @@
 <resources>
     <color name="my_primary">#673AB7</color>
     <color name="my_secondary">#63EE00</color>
-    <color name="my_statusbar">#8B0D4A</color>
-    <color name="my_text">#ED0A0A</color>
+    <color name="my_statusbar">#9C27B0</color>
+    <color name="my_text">#FFEB3B</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="green">#63EE00</color>
