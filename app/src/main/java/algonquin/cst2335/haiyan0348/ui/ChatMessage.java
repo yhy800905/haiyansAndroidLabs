@@ -1,15 +1,33 @@
 package algonquin.cst2335.haiyan0348.ui;
 
-public class ChatMessage {
-    String message;
-    String timeSent;
-    boolean isSentButton;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-    public ChatMessage(String m, String t, boolean sent)
+@Entity
+public class ChatMessage {
+    @PrimaryKey(autoGenerate = true) //increment the ids for us
+    @ColumnInfo(name="id")
+    public long id;
+
+    @ColumnInfo(name="Message")
+    protected String message;
+
+    @ColumnInfo(name="SendOrReceive")
+    protected int sendOrReceive;
+
+    @ColumnInfo(name="TimeSent")
+    protected String timeSent;
+
+    public ChatMessage() {
+        // Empty constructor required by Room
+    }
+
+    public ChatMessage(String m, String t, int type)
     {
-        message = m;
-        timeSent = t;
-        isSentButton = sent;
+        this.message = m;
+        this.timeSent = t;
+        this.sendOrReceive = type;
     }
 
     public String getMessage() {
@@ -20,19 +38,7 @@ public class ChatMessage {
         return timeSent;
     }
 
-    public boolean isSentButton() {
-        return isSentButton;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public void setTimeSent(String timeSent) {
-        this.timeSent = timeSent;
-    }
-
-    public void setSentButton(boolean sentButton) {
-        isSentButton = sentButton;
+    public int getSendOrReceive() {
+        return sendOrReceive;
     }
 }

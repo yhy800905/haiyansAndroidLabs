@@ -1,5 +1,3 @@
 <resources>
     <string name="app_name" translatable="false">Haiyan\'s Android Labs</string>
-    <string name="hello_message">Type your Password:"</string>
-    <string name="button_message">Login</string>
 </resources>
