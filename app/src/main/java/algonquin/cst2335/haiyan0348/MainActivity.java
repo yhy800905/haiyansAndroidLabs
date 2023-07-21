@@ -16,56 +16,43 @@ import android.widget.Toast;
  */
 public class MainActivity extends AppCompatActivity {
 
-    /**
-     * This holds the "Type your Password" text view
-     */
-    protected TextView theText;
-
-
-    /**
-     * This holds the "Login" button
-     */
-    protected Button myButton;
-
-
-    /**
-     * This holds the edit text for typing into
-     */
-    protected EditText theEditText;
-
+    /** This holds the text at the centre of the screen*/
+    TextView tv = null;
+    /** This holds the edit text for typing into*/
+    EditText et = null;
+    /** This holds the "Login" button*/
+    Button btn = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //calling onCreate from parent class
         super.onCreate(savedInstanceState);
-        //loads an XML file on the page
         setContentView(R.layout.activity_main);
 
-        theText = findViewById(R.id.textView);
-        myButton = findViewById(R.id.button);
-        theEditText = findViewById(R.id.theEditText);
+        tv = findViewById(R.id.textView);
+        et = findViewById(R.id.theEditText);
+        btn = findViewById(R.id.button);
 
-        myButton.setOnClickListener(click -> {
-            String password = theEditText.getText().toString();
+        btn.setOnClickListener( clk ->{
+            String password = et.getText().toString();
 
-            checkPasswordComplexity(password);
+            if (checkPasswordComplexity(password)) {
+                tv.setText("Your password meets the requirements");
+            } else {
+                tv.setText("You shall not pass!");
+            }
         });
     }
 
-    /**
-     * Checks the complexity of a password.
+    /** This function checks if the password string is too simple or not.
      *
-     * @param pw The string object that we are checking
-     * @return {@code true} if the password meets the complexity requirements, {@code false} otherwise.
+     * @param pw The String object that we are checking
+     * @return Returns true if this string has an Upper Case letter, a lower case letter, a number, and a special symbol; returns false otherwise.
      */
     boolean checkPasswordComplexity(String pw) {
+        boolean foundUpperCase, foundLowerCase, foundNumber, foundSpecial;
 
-        boolean foundUpperCase = false;
-        boolean foundLowerCase = false;
-        boolean foundNumber = false;
-        boolean foundSpecial = false;
+        foundUpperCase = foundLowerCase = foundNumber = foundSpecial = false;
 
-        //String password = theEditText.getText().toString();
         for (int i = 0; i < pw.length(); i++) {
             char c = pw.charAt(i);
 
@@ -80,42 +67,58 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        if (!foundUpperCase) {
-            Toast.makeText(this, "Your password does not have an upper case letter", Toast.LENGTH_SHORT).show();
-            theText.setText("You shall not pass!");
+        if(!foundUpperCase)
+        {
+
+            Toast.makeText(MainActivity.this, "Missing an upper case letter", Toast.LENGTH_SHORT).show();// Say that they are missing an upper case letter;
+
             return false;
-        } else if (!foundLowerCase) {
-            Toast.makeText(this, "Your password does not have a lower case letter", Toast.LENGTH_SHORT).show();
-            theText.setText("You shall not pass!");
-            return false;
-        } else if (!foundNumber) {
-            Toast.makeText(this, "Your password does not have a number", Toast.LENGTH_SHORT).show();
-            theText.setText("You shall not pass!");
-            return false;
-        } else if (!foundSpecial) {
-            Toast.makeText(this, "Your password does not have a special symbol", Toast.LENGTH_SHORT).show();
-            theText.setText("You shall not pass!");
-            return false;
-        } else {
-            Toast.makeText(this, "Password is valid", Toast.LENGTH_SHORT).show();
-            theText.setText("Your password meets the requirements");
-            return true;
+
         }
+
+        else if( ! foundLowerCase)
+        {
+            Toast.makeText(MainActivity.this, "Missing an lower case letter", Toast.LENGTH_SHORT).show(); // Say that they are missing a lower case letter;
+
+            return false;
+
+        }
+
+        else if( ! foundNumber)
+        {
+            Toast.makeText(MainActivity.this, "Missing an number", Toast.LENGTH_SHORT).show(); // Say that they are missing a number;
+
+            return false;
+        }
+
+        else if(! foundSpecial)
+        {
+            Toast.makeText(MainActivity.this, "Missing a special character", Toast.LENGTH_SHORT).show(); // Say that they are missing a special character;
+
+            return false;
+        }
+
+        else
+
+            return true; //only get here if they're all true
     }
 
-    /**
-     * Checks if a character is a special character.
+    /** This function checks if a character is a special character.
      *
-     * @param c The character to be checked.
-     * @return {@code true} if the character is a special character, {@code false} otherwise.
+     * @param c The character to check.
+     * @return Returns true if the character is one of #$%^&*!@?; returns false otherwise.
      */
     private boolean isSpecialCharacter(char c) {
-        //return true if c is one of: #$%^&*!@?
-        //return false otherwise
         switch (c) {
             case '#':
-            case '?':
+            case '$':
+            case '%':
+            case '^':
+            case '&':
             case '*':
+            case '!':
+            case '@':
+            case '?':
                 return true;
             default:
                 return false;
