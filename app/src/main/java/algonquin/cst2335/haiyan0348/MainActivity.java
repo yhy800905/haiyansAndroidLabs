@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
                                 image = BitmapFactory.decodeFile(pathname);
                                 runOnUiThread(() -> binding.icon.setImageBitmap(image));
                             } else {
-                                imgReq = new ImageRequest("https://openweathermap.org/img/w/" + iconName + ".png",
+                                imgReq = new ImageRequest("http://openweathermap.org/img/w/" + iconName + ".png",
                                         bitmap -> {
                                             try {
                                                 // Do something with loaded bitmap...
